@@ -278,7 +278,7 @@ static void dumpport(OMX_HANDLETYPE handle, int port)
 
 
 
-static int mapcodec(enum CodecID id)
+static int mapcodec(enum AVCodecID id)
 {
 	printf("Mapping codec ID %d (%x)\n", id, id);
 	switch (id) {
@@ -348,9 +348,9 @@ static AVFormatContext *makeoutputcontext(AVFormatContext *ic,
 	fmt = av_guess_format(NULL, oname, NULL);
 	if (!fmt) {
 		fprintf(stderr, "Can't guess format for %s; defaulting to "
-			"MPEG\n",
+			"MKV\n",
 			oname);
-		fmt = av_guess_format(NULL, "MPEG", NULL);
+		fmt = av_guess_format("matroska", NULL, NULL);
 	}
 	if (!fmt) {
 		fprintf(stderr, "Failed even that.  Bye bye.\n");
